@@ -29,37 +29,31 @@ body {
 .center-icon img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 /* Orbit Rings */
-.orbit-ring {
+.orbit {
     position: absolute;
-    border: 2px solid rgba(200, 200, 200, 0.4);
     border-radius: 50%;
+    border: 2px solid rgba(200, 200, 200, 0.5); /* Light Grey Orbit Lines */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 /* Inner Orbit */
-.inner-ring {
+.inner-orbit {
     width: 280px;
     height: 280px;
+    animation: rotate 10s linear infinite;
 }
 
 /* Outer Orbit */
-.outer-ring {
-    width: 420px;
-    height: 420px;
-}
-
-/* Orbit groups for rotation */
-.orbit-group {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: rotate 20s linear infinite;
+.outer-orbit {
+    width: 400px;
+    height: 400px;
+    animation: rotate 18s linear infinite;
 }
 
 /* Orbiting Logos */
@@ -69,23 +63,11 @@ body {
     height: 60px;
     background: white;
     border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transform: translate(-50%, -50%);
-    animation: stay-upright 20s linear infinite;
 }
-
-/* Inner Orbit Logo Positions */
-.google-calendar { top: 0%; left: 50%; }
-.outlook { top: 85%; left: 15%; }
-.gmail { top: 85%; left: 85%; }
-
-/* Outer Orbit Logo Positions */
-.zapier { top: 0%; left: 50%; }
-.slack { top: 85%; left: 30%; }
-.calendly { top: 85%; left: 70%; }
 
 /* Logo Images */
 .orbiting-logo img {
@@ -93,14 +75,31 @@ body {
     height: auto;
 }
 
-/* Rotation */
+/* Animate rotation */
 @keyframes rotate {
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Keep upright */
-@keyframes stay-upright {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(-360deg); }
+/* Keep logos upright using counter rotation */
+.orbiting-logo {
+    animation: counter-rotate 10s linear infinite;
+}
+
+.outer-orbit .orbiting-logo {
+    animation-duration: 18s;
+}
+
+@keyframes counter-rotate {
+    from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+    to { transform: rotate(-360deg) translateX(140px) rotate(360deg); }
+}
+
+.inner-orbit .orbiting-logo {
+    animation: counter-rotate-inner 10s linear infinite;
+}
+
+@keyframes counter-rotate-inner {
+    from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    to { transform: rotate(-360deg) translateX(100px) rotate(360deg); }
 }
