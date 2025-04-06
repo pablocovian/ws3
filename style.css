@@ -1,92 +1,106 @@
-/* Base Styles */
+/* General Styles */
 body {
-  margin: 0;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    margin: 0;
 }
 
+/* Orbit Container */
 .orbit-container {
-  position: relative;
-  width: 500px;
-  height: 500px;
+    position: relative;
+    width: 500px;
+    height: 500px;
 }
 
 /* Center Icon */
 .center-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 .center-icon img {
-  width: 80px;
+    width: 100%;
+    height: 100%;
 }
 
 /* Orbit Rings */
 .orbit-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid rgba(200, 200, 200, 0.5);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    border: 2px solid rgba(200, 200, 200, 0.4);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.inner-orbit {
-  width: 300px;
-  height: 300px;
+/* Inner Orbit */
+.inner-ring {
+    width: 280px;
+    height: 280px;
 }
 
-.outer-orbit {
-  width: 450px;
-  height: 450px;
+/* Outer Orbit */
+.outer-ring {
+    width: 420px;
+    height: 420px;
 }
 
-.rotator {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  animation: spin 20s linear infinite;
+/* Orbit groups for rotation */
+.orbit-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 20s linear infinite;
 }
 
-/* Common Logo Style */
+/* Orbiting Logos */
 .orbiting-logo {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    animation: stay-upright 20s linear infinite;
 }
 
+/* Inner Orbit Logo Positions */
+.google-calendar { top: 0%; left: 50%; }
+.outlook { top: 85%; left: 15%; }
+.gmail { top: 85%; left: 85%; }
+
+/* Outer Orbit Logo Positions */
+.zapier { top: 0%; left: 50%; }
+.slack { top: 85%; left: 30%; }
+.calendly { top: 85%; left: 70%; }
+
+/* Logo Images */
 .orbiting-logo img {
-  width: 100%;
-  height: auto;
-  transform: rotate(0deg);
-  animation: counter-rotate 20s linear infinite;
+    width: 60%;
+    height: auto;
 }
 
-/* Position logos evenly spaced in the circle */
-.inner-orbit .orbiting-logo:nth-child(1) { transform: rotate(0deg) translate(150px) rotate(0deg); }
-.inner-orbit .orbiting-logo:nth-child(2) { transform: rotate(120deg) translate(150px) rotate(-120deg); }
-.inner-orbit .orbiting-logo:nth-child(3) { transform: rotate(240deg) translate(150px) rotate(-240deg); }
-
-.outer-orbit .orbiting-logo:nth-child(1) { transform: rotate(0deg) translate(225px) rotate(0deg); }
-.outer-orbit .orbiting-logo:nth-child(2) { transform: rotate(120deg) translate(225px) rotate(-120deg); }
-.outer-orbit .orbiting-logo:nth-child(3) { transform: rotate(240deg) translate(225px) rotate(-240deg); }
-
-/* Animations */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Rotation */
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes counter-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
+/* Keep upright */
+@keyframes stay-upright {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
 }
